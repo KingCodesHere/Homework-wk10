@@ -1,0 +1,164 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+  "url": "https://raw.githubusercontent.com/KingCodesHere/FIT3179Assignment2/main/Data/API_EN.ATM.CO2E.KT_DS2_en_csv_v2_4577283.csv"
+  },
+  
+  "params": [
+    {
+      "name": "selected_year",
+      "value": 2019,
+      "bind": {
+        "input": "range",
+        "min": 1990,
+        "max": 2019,
+        "step": 1,
+        "name": "Year"
+      }
+    }
+  ],
+
+  "vconcat":[
+  {
+    "width": "container",
+    "height": 600,
+    "title": "CO2 emissions (kt)",
+    "projection": {"type": "equalEarth"},
+    "layer": [
+            {
+        "data": {
+          "url": "https://raw.githubusercontent.com/KingCodesHere/FIT3179Assignment2/main/js/ne_110m_wgs84_bounding_box.json",
+          "format": {"type": "topojson", "feature": "ne_110m_wgs84_bounding_box"}
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": "#45afed",
+          "stroke": "lightgray"
+        }
+      },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/KingCodesHere/FIT3179Assignment2/main/js/ne_110m_admin_0_countries.json",
+            "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+          },
+           "transform": [
+            {
+              "calculate": "'Data is not available in ' + datum.properties.NAME",
+              "as": "note"
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "fill": "#ddd",
+            "stroke": "white",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "tooltip": {"field": "note"}
+          }
+        },
+        {
+          "params": [
+            {
+              "name": "country_select",
+              "select": {"type": "point", "encodings": ["description"]}
+            }
+            
+          ],
+        "transform": [
+          {
+            "lookup": "Country",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/KingCodesHere/FIT3179Assignment2/main/js/ne_110m_admin_0_countries.json",
+                "format": {
+                  "type": "topojson",
+                  "feature": "ne_110m_admin_0_countries"
+                }
+              },
+               "key": "properties.NAME_LONG"
+              },
+            "as": "geo"
+          },
+          {"filter": "year(datum.year) == selected_year"}
+        ],
+        
+        "mark": {"type": "geoshape"},
+        "encoding": {
+          "shape": {"field": "geo", "type": "geojson"},
+          "description": {"field": "Country"},
+           "fill": {
+            "field": "Value_million",
+            "type": "quantitative",
+            "title": ["CO2 emissions in million"],
+             "scale": {
+                "domain": [0, 4],
+                "scheme": "reds"
+            },
+            "legend": {"format": ".2s","orient": "top"}
+          },
+          "tooltip": [
+              {"field": "Country", "title": "Country"},
+              {"field": "Value", "format": ",", "title": "CO2 emissions (kt)"},
+              {"field": "year", "title": "Year", "type": "temporal", "timeUnit": "year"}
+            ]
+        }
+      },
+      {
+        "data":{
+          "url":"https://raw.githubusercontent.com/KingCodesHere/FIT3179Assignment2/main/js/ne_110m_graticules_30.json",
+          "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+        }, 
+        "mark": {"type": "geoshape", "fill": null,"stroke":"lightgray"}
+      }
+    ]
+
+  },
+   {
+      "width": "container",
+      "height": 300,
+      "layer": [
+        {
+          "mark": {
+          "type": "line",
+          "point": {
+            "filled": false,
+            "fill": "white"
+          }
+        },
+          "transform": [
+            {"filter": {"param": "country_select"}}
+          ],
+          "encoding": {
+            "x": {"field": "year", "type": "temporal", "axis": {"grid": false}, "title": "Year"},
+            "y": {"aggregate": "sum", "field": "Value_million", "type": "quantitative", "title": "CO2 emissions(million ton)", "axis": {"format": ".2s"}
+            },
+              "tooltip": [
+              {"field": "Country", "title": "Country"},
+              {"field": "Value", "format": ",", "title": "CO2 emissions (kt)"},
+              {"field": "year", "title": "Year", "type": "temporal", "timeUnit": "year"}
+            ]
+          }
+        },
+        {
+          "mark": {
+              "type": "text",
+              "align": "right",
+              "baseline": "bottom",
+              "x": "width",
+              "y": 0
+          },
+          "encoding": {
+            "text": {
+              "condition": {
+                "test": "!isDefined(country_select.Country)",
+                "value": "entire world"
+              },
+              "value": {"expr": "country_select.Country"}
+            }
+          }
+        }
+      ]
+   }
+  ]
+}

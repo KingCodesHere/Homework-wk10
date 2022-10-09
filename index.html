@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Global warming</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/translate.js"></script>
+
+	<!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+	<script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+</head>
+<body>
+
+	<title> Global warming is now! </title>
+	<header class="hero">
+		<nav class="navbar">
+			<ul>
+				<li><a class="logo"> Global <span>warming</span> is Now !</li>
+			</ul>
+				
+        </nav>
+
+
+		</div>
+	</header>
+	
+<div  id = "service">
+	<div class="service">
+		<div  class="title">
+			<h2>Global warming of <span>1ºC</span></h2>
+		</div>
+		
+		<div  class = "column_list"> 
+			<div id="vis1" class = "column_chart"></div>
+			<div class = "column_chart" > 
+				<h3 class = "annotation" >Global temperature</h3>
+				<p class = "body"> temperature increases </p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="explain">
+	<div class = "explain">
+		<div class="box">
+			<div class="card">
+				<i class="fas fa-bars" ></i>
+				<h5 id= furnture_assembly_tag>content</h5>
+				<div class="pra" >
+					<p id = pra_tag>Providing something</p>
+
+					</p>
+				</div>
+			</div>
+
+			<div class="card">
+				<i class="far fa-user"></i>
+				<h5>content</h5>
+				<div class="pra" >
+					<p id = pra_tag_tutor>They help students to improve their grades, understand difficult concepts, receive extra help to catch up with classroom lessons.</p>
+
+				</div>
+			</div>
+			<div class="card">
+				<i class="far fa-building"></i>
+				<h5>content</h5>
+				<div class="pra" >
+					<p id = pra_tag_tutor>They help students to improve their grades, understand difficult concepts, receive extra help to catch up with classroom lessons.</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div  id = "service">
+	<div class="service">
+		<div  class="title">
+			<h2>Global warming of <span>1ºC</span></h2>
+		</div>
+		
+		<div  class = "column_list"> 
+			<div id="vis2" class = "column_chart"></div>
+			<div class = "column_chart" > 
+				<h3 class = "annotation" >Co2 emission</h3>
+				<p class = "body"> temperature increases </p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+</div>
+	<footer id = "contact" class="footer">
+
+			<div class="social__media--wrap">
+			  <p class="website__rights">CopyRight By Junhao Li</p>
+			</div>
+
+	
+	</footer>
+
+	
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+	var spec1 = "js/Histogram.vg.json";
+	var spec2 = "js/choropleth_mapCo2.vg.json";
+
+	vegaEmbed('#vis1', spec1).then(function(result) {
+	}).catch(console.error);
+	vegaEmbed('#vis2', spec2).then(function(result) {
+	}).catch(console.error);
+
+</script>

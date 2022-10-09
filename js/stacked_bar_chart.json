@@ -1,0 +1,17 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 300, "height": 200,
+    "data": {"url": "https://raw.githubusercontent.com/KingCodesHere/FIT3179Assignment2/main/Data/modern-renewable-energy-consumption.csv"},
+    "mark": "bar",
+    "encoding": {
+      "x": {
+         "field": "year","type": "temporal"},
+     "y": {
+        "field": "Value","type": "quantitative", "scale": { "domain": [0, 1000] },"title": "", "axis": {"format": ".2s"}
+      },
+      "color": {
+        "field": "method",
+        "type": "nominal"
+      }
+    }
+  }

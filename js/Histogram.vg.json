@@ -1,0 +1,39 @@
+{ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/KingCodesHere/FIT3179Assignment2/main/Data/temperature_change.csv"},
+    "height" :400,
+    "width" :"container",
+    "config": {
+      "axis": {"labelFont": "sans-serif", "titleFont": "sans-serif","labelFontSize":15,"titleFontSize":20,"labelLimit": 0},
+      "legend": {"labelFont": "sans-serif", "titleFont": "sans-serif","labelFontSize":16,"titleFontSize":16,"labelLimit": 0},
+      "header": {"labelFont": "sans-serif", "titleFont": "sans-serif","labelFontSize":20,"titleFontSize":15},
+      "title": {"font": "sans-serif", "subtitleFont": "sans-serif","fontSize":20}
+    },
+
+  "mark": "bar",
+  "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "temporal",
+        "title": "Year",
+ 
+        "axis": {"grid": false}
+      },
+      "y": {
+        
+        "field": "Value",
+        "type": "quantitative",
+        "title": "Temperature(°C)",
+        "scale": { "domain": [-0.5, 1] },
+        "axis": {"grid": true}
+        
+      },
+      "color": {
+        "condition": {"test": "datum['Value'] < 0", "value": "#0b2b96"},
+        "value":"#9e2911"
+      },
+      "tooltip": [
+        {"field": "Value", "type": "quantitative","title":"Temperature"},
+        {"field" : "Year","type": "temporal"}   
+      ]
+  }
+}

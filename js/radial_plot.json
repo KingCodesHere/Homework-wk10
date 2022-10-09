@@ -1,0 +1,26 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple radial chart with embedded data.",
+    "data": {
+      "values": [        
+          {"category": "Rest of the World", "value": 41.59},
+          {"category": "China", "value": 29.18},
+          {"category": "Japan", "value": 3.47},
+          {"category": "Russia", "value":4.65},
+          {"category": "India", "value":7.09},
+          {"category": "United States", "value": 14.02}]
+    },
+    "layer": [{
+      "mark": {"type": "arc", "innerRadius": 20, "stroke": "#fff"}
+    }],
+    "encoding": {
+      "theta": {"field": "value", "type": "quantitative", "stack": true},
+      "radius": {"field": "value", "scale": {"type": "sqrt", "zero": true, "rangeMin": 50}},
+      "color": {"field": "category", "type": "nominal","legend": {"columns":2,"orient": "bottom"}},
+      "order":{"field":"value","type": "quantitative","sort":"ascending"},
+      "tooltip":[
+      {"field":"category","type":"nominal","title":"Country/Region"},
+      {"field":"value","type": "quantitative", "title":"Contribution to Emission","format":".2s"}
+    ]
+    }
+  }

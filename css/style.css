@@ -1,0 +1,229 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-family: 'Josefin Sans', sans-serif;
+	box-sizing: border-box;
+}
+.hero{
+	display: flex;
+	height: 70vh;
+	width: auto;
+	background-image: url(icemelting.jpg);
+	background-color: black;
+	background-size: cover;
+	background-position: center;
+}
+nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 45px;
+	padding-left: 8%;
+	padding-right: 8%;
+}
+.logo{
+	color: rgb(255, 255, 255);
+	font-size: 40px;
+	letter-spacing: 2px;
+}
+span{
+	color: #f9004d;
+}
+
+.column_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column_chart {
+	padding-top: 30px;
+	width:60%;
+	padding-left: 30px;
+	
+	
+}
+.annotation {
+    font-family: 'Century Gothic', sans-serif;
+    color: #e0f0e3;
+    background: #f9004d;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+nav ul li{
+	list-style-type: none;
+	display: inline-block;
+	padding: 10px  40px;
+}
+nav ul li a{
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+
+.content{
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translateY(50%);
+}
+h1{
+	color: white;
+	margin: 20px 0px 20px;
+	font-size: 75px;
+}
+
+h3{
+	color: white;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 35px;
+}
+
+.body {
+	font-family: 'Josefin Sans', sans-serif;
+    text-align: justify;
+    text-justify: inter-word;
+	padding-top: 10px;
+	font-size: 25px;
+}
+
+.service{
+	background: #101010;
+	width: 100%;
+	padding: 100px 0px;
+}
+.explain{
+	background: #101010;
+	width: 100%;
+	padding: 100px 0px;
+}
+.title h2{
+	color: white;
+	font-size: 45px;
+	width: 100%;
+	margin: 30px auto;
+	padding-left: 30px;
+	
+}
+.box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 400px;
+}
+.card{
+	height: 365px;
+	width: 335px;
+	padding: 20px 35px;
+	background: #191919;
+	border-radius: 20px;
+	margin: 15px;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+}
+.card i{
+	font-size: 50px;
+	display: block;
+	text-align: center;
+	margin: 25px 0px;
+	color: #f9004d;
+
+}
+h5{
+	color: white;
+	font-size: 23px;
+	margin-bottom: 15px;
+}
+
+.pra p{
+	color: #fcfc;
+	font-size: 16px;
+	line-height: 27px;
+	margin-bottom: 25px;
+}
+
+
+footer{
+	position: relative;
+	width: 100%;
+	height: 400px;
+	background-color: #101010;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.footer-title, .footer-info {
+	font-size: 30px;
+	color: white;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+
+.social__media--wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
+	max-width: 1000px;
+	margin: 40px auto 0 auto;
+}
+
+.website__rights {
+	font-size: 12px;
+	color: white;
+	padding-left: 42%;
+}
+
+
+
+
+@media only screen and (max-width: 1334px) {
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background: rgb(161, 10, 10);
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+		z-index: 999;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    
+	.box {
+		display: grid;
+	}
+
+
+	.backgroundsquare {
+		background-color: transparent;
+	}
+
+	.about {
+		overflow-x: hidden;
+	
+	}
+
+}
+
+
